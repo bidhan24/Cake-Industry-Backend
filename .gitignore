@@ -6,7 +6,8 @@ config.env
 /node_modules
 /.pnp
 .pnp.js
-
+/userProfile
+/adminProfile
 
 # testing
 /coverage
