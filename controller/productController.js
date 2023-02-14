@@ -66,4 +66,20 @@ productController.getProductById = async (req, res) => {
   }
 };
 
+productController.recentlyAdded = async (req, res) => {
+  try {
+    const data = await Product.find({}).sort({ date: -1 }).limit(5);
+    res
+      .status(200)
+      .send({
+        success: true,
+        data,
+        totalData: data.length,
+        message: "recently added product",
+      });
+  } catch (e) {
+    res.status(505).send({ success: false, message: e.message });
+  }
+};
+
 module.exports = productController;
