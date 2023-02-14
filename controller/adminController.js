@@ -15,17 +15,6 @@ adminController.addAdmin = async (req, res) => {
     password,
   } = req.body;
 
-  console.log(
-    firstName,
-    middleName,
-    lastName,
-    phone,
-    email,
-    role,
-    adminRole,
-    password
-  );
-
   if (
     !firstName ||
     !lastName ||
@@ -66,7 +55,7 @@ adminController.addAdmin = async (req, res) => {
         email: email,
         password: password,
         role,
-        userId: newAdmin._id,
+        adminId: newAdmin._id,
       });
 
       await userLogin.save();
