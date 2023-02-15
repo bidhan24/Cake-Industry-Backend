@@ -17,9 +17,9 @@ router.patch("/verify-otp", authController.verifyOtp);
 
 router.patch("/forget-password", authController.forgetPasswod);
 
-router.get("/detail", Authenticate, (req, res) => {
-  console.log("reached");
-  res.send({ success: true, user: req.rootUser });
-});
+// router.get("/detail", Authenticate, (req, res) => {
+//   console.log("reached");
+//   res.send({ success: true, user: req.rootUser });
+// });
 
 module.exports = router;
