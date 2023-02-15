@@ -11,13 +11,8 @@ app.use(express.json());
 const PORT = process.env.PORT;
 
 const cors = require("cors");
-const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(cookieParser());
 
 app.use("/userProfile", express.static("userProfile"));
