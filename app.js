@@ -30,12 +30,14 @@ const adminRoute = require("./router/adminRoute");
 const authRoute = require("./router/authRoute");
 const categoryRoute = require("./router/categoryRoute");
 const productRoute = require("./router/productRoute");
+const cartRoute = require("./router/cartRoute");
 
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.use("/admin", adminRoute);
 app.use("/category", categoryRoute);
 app.use("/product", productRoute);
+app.use("/cart", cartRoute);
 
 app.get("/", (req, res) => {
   res.send("hello from the server");

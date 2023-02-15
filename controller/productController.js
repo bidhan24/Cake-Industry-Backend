@@ -1,3 +1,4 @@
+const Category = require("../modal/categorySchema");
 const Product = require("../modal/productSchema");
 
 const productController = {};
@@ -69,14 +70,32 @@ productController.getProductById = async (req, res) => {
 productController.recentlyAdded = async (req, res) => {
   try {
     const data = await Product.find({}).sort({ date: -1 }).limit(5);
-    res
-      .status(200)
-      .send({
-        success: true,
-        data,
-        totalData: data.length,
-        message: "recently added product",
-      });
+    res.status(200).send({
+      success: true,
+      data,
+      totalData: data.length,
+      message: "recently added product",
+    });
+  } catch (e) {
+    res.status(505).send({ success: false, message: e.message });
+  }
+};
+
+productController.getProductByCategory = async (req, res) => {
+  try {
+    var mongoose = require("mongoose");
+    const id = req.params.id;
+    var catId = mongoose.Types.ObjectId(id);
+    console.log("Ca", catId);
+    const category = await Category.find({ _id: catId });
+    const data = await Product.find({ category: catId });
+    res.status(200).send({
+      success: true,
+      data,
+      category,
+      totalData: data.length,
+      message: "data get successfully",
+    });
   } catch (e) {
     res.status(505).send({ success: false, message: e.message });
   }

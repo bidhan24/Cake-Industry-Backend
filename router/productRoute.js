@@ -9,5 +9,6 @@ router.post("/add", upload.single("image"), productController.addProduct);
 router.get("/", productController.getAllProduct);
 router.get("/:id", productController.getProductById);
 router.get("/get/recentlyAdded", productController.recentlyAdded);
+router.get("/category/:id", productController.getProductByCategory);
 
 module.exports = router;
